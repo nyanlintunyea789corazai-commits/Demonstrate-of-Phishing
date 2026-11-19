@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phishing Awareness Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="demo-ribbon"><span>CLASSROOM TRAINING DEMO: runs entirely in this browser. No data is sent anywhere.</span></div>
+
+  <div class="wrap">
+    <div class="card">
+      <h1>Phishing Awareness Demo</h1>
+      <p>
+        This lesson shows students how a fake login page steals usernames and passwords,
+        and how to spot one. It uses a <b>fictional bank ("ExampleBank")</b> and works fully offline:
+        no form is submitted to any server, and the "captured" details are kept only in
+        the open browser tab until you erase them or close it.
+      </p>
+      <div class="actions">
+        <a class="btn" href="login.html">Start the demo: open the fake login page</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Suggested lesson flow (about 15 minutes)</h2>
+      <ol class="steps">
+        <li><b>Set the scene.</b> Tell the class: "You got a text saying your bank account is locked. You tapped the link."</li>
+        <li><b>Open the fake page</b> on the projector. Ask: "Would you sign in here?" Let students point out anything odd before you sign in.</li>
+        <li><b>Sign in with a made-up test account</b> (for example <code>student@example.com</code> / <code>Summer2025!</code>). Never use a real password.</li>
+        <li><b>Reveal the debrief.</b> Walk through what was captured, especially the details nobody typed.</li>
+        <li><b>Go through the red flags</b> one by one and see how many the class caught.</li>
+        <li><b>Finish with the protection tips</b>, then press <i>Erase captured data</i>.</li>
+      </ol>
+      <p class="note">Tip: the password on the debrief page is masked by default so it isn't shown on the projector by accident. Press <b>Show</b> when you want to reveal it.</p>
+    </div>
+
+    <div class="card">
+      <h2>Discussion questions</h2>
+      <ul class="steps">
+        <li>Which red flag would you be most likely to miss on a phone? Why?</li>
+        <li>Why does a padlock (HTTPS) not prove a site is safe?</li>
+        <li>How would a password manager have protected you here?</li>
+        <li>If you reuse one password on five sites and it gets phished, how many accounts are at risk?</li>
+        <li>Why are passkeys and security keys resistant to this attack?</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>How to run it</h2>
+      <p>Double-click <code>index.html</code> to open it in any modern browser. No install or internet connection needed.</p>
+      <p class="muted" style="margin-bottom:0">
+        Files: <code>index.html</code> (this page), <code>login.html</code> (fake login),
+        <code>debrief.html</code> (reveal and lesson), <code>style.css</code>.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

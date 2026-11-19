@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>You Were Phished: Debrief</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="demo-ribbon"><span>CLASSROOM TRAINING DEMO: this data is shown only on this screen and was never sent anywhere.</span></div>
+
+  <div class="wrap">
+
+    <div class="card reveal-head">
+      <h1>Gotcha! This was a phishing page.</h1>
+      <p style="margin-bottom:0">
+        If this had been a real attack, the moment you pressed <b>Sign in securely</b>
+        your details would have been sent to the attacker's server. Here is exactly
+        what they would now have.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>What the attacker captured</h2>
+      <div id="noData" class="note" hidden>
+        No captured data found. Go back to the <a href="login.html">fake login page</a> and sign in with a test account first.
+      </div>
+      <table class="captured" id="capTable" hidden>
+        <tbody>
+          <tr><th>Username / email</th><td><code id="c-user"></code></td></tr>
+          <tr><th>Password</th><td><code id="c-pass"></code><button class="btn secondary pw-toggle" id="pwToggle" type="button">Show</button></td></tr>
+          <tr><th>Time you signed in</th><td id="c-time"></td></tr>
+          <tr><th>Your browser &amp; device</th><td><code id="c-browser"></code></td></tr>
+          <tr><th>Operating system</th><td id="c-platform"></td></tr>
+          <tr><th>Language</th><td id="c-lang"></td></tr>
+          <tr><th>Time zone (rough location)</th><td id="c-tz"></td></tr>
+          <tr><th>Screen size</th><td id="c-screen"></td></tr>
+        </tbody>
+      </table>
+      <p class="muted" style="margin-bottom:0">
+        Notice that you never typed anything except your username and password.
+        Everything else your browser handed over automatically. A real attacker also
+        sees your <b>IP address</b>, which reveals your approximate city and internet provider.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>What happens next in a real attack</h2>
+      <ol class="steps">
+        <li><b>Within minutes</b>, the attacker (often a script) tries your username and password on the <i>real</i> bank's website.</li>
+        <li><b>Credential stuffing:</b> they try the same password on email, social media and shopping sites, because most people reuse passwords.</li>
+        <li><b>Email takeover is the jackpot:</b> with your email they can reset the password on almost every other account you own.</li>
+        <li><b>Your details are sold</b> in bulk lists, so other criminals can use them weeks or months later.</li>
+        <li>The browser and time zone details help them <b>look like you</b> when logging in, so fewer alarms go off.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>The red flags you could have spotted</h2>
+      <ol class="flags">
+        <li>
+          <b>The web address was wrong.</b>
+          <code>examp1ebank-secure-login.account-verify.co</code>. The real site's name is the part just before the
+          last dot-ending. Here that is <code>account-verify.co</code>, which has nothing to do with the bank.
+          Words like "secure" or "login" in a URL prove nothing.
+        </li>
+        <li>
+          <b>A lookalike name.</b> "Examp<b>1</b>eBank" uses the number 1 instead of the letter l. Attackers also swap
+          <code>rn</code> for <code>m</code>, <code>0</code> for <code>o</code>, or use foreign letters that look identical.
+        </li>
+        <li>
+          <b>"Not secure" / no HTTPS.</b> The address started with <code>http://</code> and the browser warned you.
+          Be careful though: many phishing sites <i>do</i> use HTTPS now. The padlock only means the connection is
+          encrypted, not that the site is honest.
+        </li>
+        <li>
+          <b>Urgency and fear.</b> "Unusual activity… sign in within 24 hours to avoid suspension." Pressure is designed
+          to make you act before you think.
+        </li>
+        <li>
+          <b>You arrived from a link.</b> Real banks rarely ask you to sign in from a link in an email or text.
+          The safe habit is to type the address yourself or use the official app.
+        </li>
+        <li>
+          <b>The logo and colours looked right.</b> That is <i>not</i> a good sign. Copying a brand's look takes
+          an attacker a few minutes, so looks are never proof.
+        </li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>How to protect yourself</h2>
+      <div class="tips">
+        <div class="tip"><b>Use a password manager</b>It only fills your password on the exact real domain. If it doesn't offer to fill, stop and check the URL.</div>
+        <div class="tip"><b>Turn on MFA</b>A second step (app code, security key, passkey) means a stolen password alone isn't enough. Security keys and passkeys can't be phished at all.</div>
+        <div class="tip"><b>Never reuse passwords</b>One phished password should unlock one account, not all of them.</div>
+        <div class="tip"><b>Go direct</b>Type the address yourself or use a bookmark or the official app instead of clicking links in messages.</div>
+        <div class="tip"><b>Read the real domain</b>Look at the name just before <code>.com</code>, <code>.co</code>, etc. Everything to the left of it can be faked.</div>
+        <div class="tip"><b>Slow down on urgency</b>Threats, deadlines and prizes are the classic tricks. Pause and verify through a channel you trust.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>If you did fall for one</h2>
+      <ol class="steps">
+        <li>Change that password immediately on the <b>real</b> site, and anywhere else you used it.</li>
+        <li>Turn on MFA if it wasn't on already, and sign out of other sessions.</li>
+        <li>Contact the bank or service using the number on your card or their official site.</li>
+        <li>Report the phishing message (e.g. "Report phishing" in your email app).</li>
+        <li>Watch your accounts for unusual activity over the next few weeks.</li>
+      </ol>
+    </div>
+
+    <div class="actions">
+      <button class="btn danger" id="clearBtn" type="button">Erase captured data</button>
+      <a class="btn secondary" href="login.html">Try the fake login again</a>
+      <a class="btn secondary" href="index.html">Back to teacher start page</a>
+    </div>
+  </div>
+
+  <script>
+    var data = null;
+    try { data = JSON.parse(sessionStorage.getItem('phishDemoCapture')); } catch (e) {}
+
+    function setText(id, value) { document.getElementById(id).textContent = value || '(empty)'; }
+
+    if (!data) {
+      document.getElementById('noData').hidden = false;
+    } else {
+      document.getElementById('capTable').hidden = false;
+      setText('c-user', data.username);
+      setText('c-time', data.time);
+      setText('c-browser', data.browser);
+      setText('c-platform', data.platform);
+      setText('c-lang', data.language);
+      setText('c-tz', data.timezone);
+      setText('c-screen', data.screen);
+
+      // Password is masked by default so it isn't flashed on a projector by accident.
+      var pw = data.password || '';
+      var shown = false;
+      var masked = pw ? pw.charAt(0) + '•'.repeat(Math.max(pw.length - 1, 0)) + '  (' + pw.length + ' characters)' : '(empty)';
+      setText('c-pass', masked);
+      document.getElementById('pwToggle').addEventListener('click', function () {
+        shown = !shown;
+        setText('c-pass', shown ? pw : masked);
+        this.textContent = shown ? 'Hide' : 'Show';
+      });
+    }
+
+    document.getElementById('clearBtn').addEventListener('click', function () {
+      try { sessionStorage.removeItem('phishDemoCapture'); } catch (e) {}
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

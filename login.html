@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Training demo: the title imitates a real bank's wording on purpose (red flag #2: lookalike name). -->
+  <title>Examp1eBank | Secure Sign In</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="demo-ribbon"><span>CLASSROOM TRAINING DEMO: fake page. Nothing you type leaves this computer.</span></div>
+
+  <div class="browser">
+    <!-- Simulated address bar, so students can practise reading the URL -->
+    <div class="browser-bar">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <div class="address" title="Simulated address bar">
+        <span class="not-secure">⚠ Not secure</span>
+        <span class="url">http://examp1ebank-secure-login.account-verify.co/signin</span>
+      </div>
+    </div>
+
+    <div class="bank-header">
+      <div class="bank-logo">E</div>
+      ExampleBank
+    </div>
+
+    <div class="alert-banner">
+      Unusual activity detected on your account. Sign in within 24 hours to avoid suspension.
+    </div>
+
+    <div class="login-area">
+      <form class="login-box" id="loginForm" autocomplete="off" novalidate>
+        <h2>Sign in to Online Banking</h2>
+        <p class="muted" style="margin-top:0">Verify your identity to restore full access.</p>
+
+        <div class="field">
+          <label for="user">Email or username</label>
+          <input id="user" name="user" type="text" required>
+        </div>
+        <div class="field">
+          <label for="pass">Password</label>
+          <input id="pass" name="pass" type="password" required>
+        </div>
+
+        <button class="btn" type="submit">Sign in securely</button>
+
+        <div class="small-links">
+          <a href="#" onclick="return false">Forgot password?</a>
+          <a href="#" onclick="return false">Enroll now</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="bank-footer">© ExampleBank (fictional). For classroom training only.</div>
+  </div>
+
+  <script>
+    // IMPORTANT: this page has no form action and makes no network requests.
+    // On submit, the "captured" values are kept only in this browser tab
+    // (sessionStorage) and shown back on the debrief page.
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var captured = {
+        username: document.getElementById('user').value,
+        password: document.getElementById('pass').value,
+        time: new Date().toString(),
+        browser: navigator.userAgent,
+        language: navigator.language,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        screen: screen.width + ' × ' + screen.height,
+        platform: navigator.platform || 'unknown'
+      };
+
+      try {
+        sessionStorage.setItem('phishDemoCapture', JSON.stringify(captured));
+      } catch (err) {
+        // If storage is blocked, fall back to passing nothing; debrief explains.
+      }
+      window.location.href = 'debrief.html';
+    });
+  </script>
+</body>
+</html>
